@@ -37,22 +37,25 @@ const toDoApp = () => {
         const todoStateCheck = (todoInput, icon) => {
             const inputParentEl = todoInput.parentElement
 
-            if (inputParentEl.getAttribute('completed') === 'false') {
-                inputParentEl.setAttribute('completed', 'true')
+            switch (inputParentEl.getAttribute('completed')) {
+                case 'false':
+                    inputParentEl.setAttribute('completed', 'true')
 
-                todoInput.style.textDecorationLine = 'line-through'
-                todoInput.style.textDecorationColor = 'brown'
-                todoInput.style.textDecorationThickness = '0.15rem'
+                    todoInput.style.textDecorationLine = 'line-through'
+                    todoInput.style.textDecorationColor = 'brown'
+                    todoInput.style.textDecorationThickness = '0.15rem'
 
-                icon.style.opacity = '1'
-            } else if (inputParentEl.getAttribute('completed') === 'true') {
-                inputParentEl.setAttribute('completed', 'false')
+                    icon.style.opacity = '1'
+                    break
+                case 'true':
+                    inputParentEl.setAttribute('completed', 'false')
 
-                todoInput.style.textDecorationLine = 'none'
-                todoInput.style.textDecorationColor = 'none'
-                todoInput.style.textDecorationThickness = 'none'
+                    todoInput.style.textDecorationLine = 'none'
+                    todoInput.style.textDecorationColor = 'none'
+                    todoInput.style.textDecorationThickness = 'none'
 
-                icon.style.opacity = '0.4'
+                    icon.style.opacity = '0.4'
+                    break
             }
         }
 
