@@ -1,0 +1,101 @@
+.todos_block {
+    position: absolute;
+    top: 120px;
+    width: 550px;
+    border-radius: 2px 2px 0px 0px;
+    box-shadow: 1px 1px 2px rgb(131, 131, 131);
+}
+
+.info_panel {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: auto;
+    height: 41px;
+    border-radius: 2px 2px 0px 0px;
+    background-color: rgb(255, 255, 255);
+    padding-right: 7px;
+}
+
+.info_panel div {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 30px;
+    border-radius: 3px;
+    padding: 1px;
+    margin: 0px 3px 0px 3px;
+}
+
+.info_panel div:hover {
+    background-color: rgba(50, 104, 175, 0.25);
+    transition: all 0.5s ease;
+}
+
+.info_panel h1 {
+    color: rgb(36, 151, 228);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    top: 1px;
+}
+
+.todo_item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: auto;
+    height: 41px;
+    border-top: 1px solid rgb(164, 164, 164);
+    background-color: rgb(255, 255, 255);
+}
+
+.todo_item_task_input {
+    color: rgb(36, 151, 228);
+    font-size: 15px;
+    font-weight: 600;
+    width: 550px;
+    height: 40px;
+    opacity: 0.9;
+    padding-left: 45px;
+}
+
+.icon_list {
+    color: rgb(36, 151, 228);
+    font-size: 22px;
+    position: absolute;
+    left: -2px;
+    top: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: inherit;
+    border-right: 1px solid rgb(164, 164, 164);
+    opacity: 1;
+}
+
+.icon_check_task {
+    cursor: pointer;
+    color: rgb(36, 151, 228);
+    font-size: 25px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    opacity: 0.4;
+}
+
+.icon_delete {
+    cursor: pointer;
+    color: rgba(255, 0, 0, 1);
+    font-size: 25px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    opacity: 0.5;
+}

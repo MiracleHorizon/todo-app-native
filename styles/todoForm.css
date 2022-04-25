@@ -1,0 +1,33 @@
+.todo_form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 1px 20px;
+}
+
+.form_input_text {
+    font-size: 16px;
+    width: 550px;
+    height: 40px;
+    padding: 1px 50px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px rgb(148, 148, 148);
+}
+
+.list_icon {
+    color: rgb(34, 135, 223);
+    font-size: 25px;
+    position: absolute;
+    left: 10px;
+}
+
+.add_icon {
+    cursor: pointer;
+    color: rgb(36, 151, 228);
+    font-size: 29px;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+}

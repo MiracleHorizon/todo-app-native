@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/styles/todoList.css" />
+        <link rel="stylesheet" href="/styles/todoForm.css" />
+        <link rel="stylesheet" href="/styles/todoItems.css" />
+        <script
+            src="https://kit.fontawesome.com/7a5a382167.js"
+            crossorigin="anonymous"
+        ></script>
+        <title>toDoList</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="todo_list">
+                <span class="title_text"><h1>ToDo List</h1></span>
+                <form id="todoForm" class="todo_form" action="#">
+                    <div class="list_icon">
+                        <i class="fa-solid fa-clipboard-list"></i>
+                    </div>
+                    <input
+                        id="todoInput"
+                        class="form_input_text"
+                        type="text"
+                        placeholder="Enter your next task"
+                    />
+                    <div id="addTodoButton" class="add_icon">
+                        <i class="fa-solid fa-circle-plus"></i>
+                    </div>
+                </form>
+                <ul id="todoList" class="todos_block">
+                    <div class="info_panel">
+                        <span class="icon_list">
+                            <i class="fa-solid fa-list-check"></i>
+                        </span>
+                        <div id="sortButtonTodo" class="sort_todo">
+                            <span><h1>ToDo</h1></span>
+                        </div>
+                        <div id="sortButtonDone" class="sort_done">
+                            <span><h1>Done</h1></span>
+                        </div>
+                        <div id="sortButtonAll" class="sort_all">
+                            <span><h1>All</h1></span>
+                        </div>
+                    </div>
+                    <li id="storage" class="todo_item" style="display: none">
+                        <!-- На момент написания кода решил не подгружать иконки через запросы на сайт, хотя с теорией уже знаком.
+                        Проект лежал около 1.5 месяца с готовой вёрсткой, но "закодить" логику не получалось. После более полного изучения теории без проблем всё получилось, однако, async/await, промисы и асинхронную подругзку данных для, например, тех же иконок решил оставить на следующий проект, поэтому они хранятся в скрытом элементе li :3-->
+                        <div
+                            id="checkTodoButton"
+                            class="icon_check_task"
+                            style="display: none"
+                        >
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+                        <div
+                            id="removeTodoButton"
+                            class="icon_delete"
+                            style="display: none"
+                        >
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script src="/toDoApp.js"></script>
+    </body>
+</html>
