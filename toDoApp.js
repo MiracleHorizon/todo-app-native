@@ -1,7 +1,7 @@
 const toDoApp = () => {
     const todoList = document.querySelector('#todoList')
     const todoForm = document.querySelector('#todoForm')
-    const todoInputValue = document.querySelector('#todoInput')
+    const todoInputField = document.querySelector('#todoInput')
 
     const addTodoButton = document.querySelector('#addTodoButton')
     const checkTodoButton = document.querySelector('#checkTodoButton')
@@ -17,9 +17,9 @@ const toDoApp = () => {
             todoInput.type = 'text'
             todoInput.classList.add('todo_item_task_input')
 
-            todoInputValue.value === ''
+            todoInputField.value === ''
                 ? (todoInput.value = 'Empty task')
-                : (todoInput.value = todoInputValue.value)
+                : (todoInput.value = todoInputField.value)
 
             return todoInput
         }
@@ -127,16 +127,16 @@ const toDoApp = () => {
         submitFormTodo = () => {
             todoForm.addEventListener('submit', () => {
                 createTodoItem()
-                todoInputValue.value = ''
-                todoInputValue.focus()
+                todoInputField.value = ''
+                todoInputField.focus()
             })
         }
 
         addButtonTodo = () => {
             addTodoButton.addEventListener('click', () => {
                 createTodoItem()
-                todoInputValue.value = ''
-                todoInputValue.focus()
+                todoInputField.value = ''
+                todoInputField.focus()
             })
         }
 
