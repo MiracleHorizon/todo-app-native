@@ -1,151 +1,126 @@
-const toDoApp = () => {
-    const todoList = document.querySelector('#todoList')
-    const todoForm = document.querySelector('#todoForm')
-    const todoInputField = document.querySelector('#todoInput')
+function toDoApp() {
+    const todoList = document.querySelector('#todo-list');
+    const todoForm = document.querySelector('#todo-form');
+    const todoInputValue = document.querySelector('#todo-input');
 
-    const addTodoButton = document.querySelector('#addTodoButton')
-    const checkTodoButton = document.querySelector('#checkTodoButton')
-    const removeTodoButton = document.querySelector('#removeTodoButton')
+    const addTodoButton = document.querySelector('#add-todo-button');
+    const checkTodoButton = document.querySelector('#check-todo-button');
+    const removeTodoButton = document.querySelector('#remove-todo-button');
 
-    const sortButtonTodo = document.querySelector('#sortButtonTodo')
-    const sortButtonDone = document.querySelector('#sortButtonDone')
-    const sortButtonAll = document.querySelector('#sortButtonAll')
+    const sortButtonTodo = document.querySelector('#sort-button-todo');
+    const sortButtonDone = document.querySelector('#sort-button-done');
+    const sortButtonAll = document.querySelector('#sort-button-all');
 
-    const createTodoItem = () => {
-        const createTodoInput = () => {
-            const todoInput = document.createElement('input')
-            todoInput.type = 'text'
-            todoInput.classList.add('todo_item_task_input')
+    function createTodoItem() {
+        function createTodoLiElement() {
+            const todoLiElement = document.createElement('li');
 
-            todoInputField.value === ''
-                ? (todoInput.value = 'Empty task')
-                : (todoInput.value = todoInputField.value)
+            todoLiElement.id = 'todo-item';
+            todoLiElement.classList.add('todo_item');
+            todoLiElement.setAttribute('completed', 'false');
 
-            return todoInput
+            return todoLiElement;
         }
 
-        const createTodoLi = () => {
-            const todoLi = document.createElement('li')
+        function createTodoInput() {
+            const todoInput = document.createElement('input');
 
-            todoLi.id = 'todoItem'
-            todoLi.classList.add('todo_item')
-            todoLi.setAttribute('completed', 'false')
+            todoInput.type = 'text';
+            todoInput.classList.add('todo_item_task_input');
+            todoInputValue.value === '' ? (todoInput.value = 'Empty task') : (todoInput.value = todoInputValue.value);
 
-            return todoLi
+            return todoInput;
         }
 
-        const todoStateCheck = (todoInput, icon) => {
-            const inputParentEl = todoInput.parentElement
+        function todoStateHandler(todoInput, icon) {
+            const inputParentEl = todoInput.parentElement;
 
             switch (inputParentEl.getAttribute('completed')) {
-                case 'false':
-                    inputParentEl.setAttribute('completed', 'true')
-
-                    todoInput.style.textDecorationLine = 'line-through'
-                    todoInput.style.textDecorationColor = 'brown'
-                    todoInput.style.textDecorationThickness = '0.15rem'
-
-                    icon.style.opacity = '1'
-                    break
                 case 'true':
-                    inputParentEl.setAttribute('completed', 'false')
+                    inputParentEl.setAttribute('completed', 'false');
 
-                    todoInput.style.textDecorationLine = 'none'
-                    todoInput.style.textDecorationColor = 'none'
-                    todoInput.style.textDecorationThickness = 'none'
+                    todoInput.style.textDecorationLine = 'none';
+                    todoInput.style.textDecorationColor = 'none';
+                    todoInput.style.textDecorationThickness = 'none';
 
-                    icon.style.opacity = '0.4'
-                    break
+                    icon.style.opacity = 0.4;
+                    break;
+                case 'false':
+                    inputParentEl.setAttribute('completed', 'true');
+
+                    todoInput.style.textDecorationLine = 'line-through';
+                    todoInput.style.textDecorationColor = 'brown';
+                    todoInput.style.textDecorationThickness = '0.15rem';
+
+                    icon.style.opacity = 1;
+                    break;
             }
         }
 
-        const createNewTodo = () => {
-            // Эксперементировал со стилем названия константных переменных.
-            const TODO_LI = createTodoLi()
-            const TODO_INPUT = createTodoInput()
+        function createNewTodo() {
+            const todoLiElement = createTodoLiElement();
+            const todoInputElement = createTodoInput();
+            const todoStateButton = checkTodoButton.cloneNode(true);
+            const todoRemoveButton = removeTodoButton.cloneNode(true);
 
-            const TASK_STATUS_BUTTON = checkTodoButton.cloneNode(true)
-            const REMOVE_BUTTON = removeTodoButton.cloneNode(true)
+            todoStateButton.style.display = 'initial';
+            todoRemoveButton.style.display = 'initial';
 
-            TASK_STATUS_BUTTON.removeAttribute('style')
-            REMOVE_BUTTON.removeAttribute('style')
+            todoStateButton.addEventListener('click', () => todoStateHandler(todoInputElement, todoStateButton));
+            todoRemoveButton.addEventListener('click', () => todoLiElement.remove());
 
-            TASK_STATUS_BUTTON.addEventListener('click', () =>
-                todoStateCheck(TODO_INPUT, TASK_STATUS_BUTTON)
-            )
-            REMOVE_BUTTON.addEventListener('click', () => TODO_LI.remove())
-
-            TODO_LI.append(TODO_INPUT)
-            TODO_LI.append(TASK_STATUS_BUTTON)
-            TODO_LI.append(REMOVE_BUTTON)
-
-            todoList.append(TODO_LI)
+            todoLiElement.append(todoInputElement, todoStateButton, todoRemoveButton);
+            todoList.append(todoLiElement);
         }
 
-        createNewTodo()
+        createNewTodo();
     }
 
-    const sortTodos = () => {
-        const sortTodo = () => {
+    function sortTodos() {
+        function sortByTodo() {
             sortButtonTodo.addEventListener('click', () => {
-                Array.from(document.querySelectorAll('#todoItem')).forEach(
-                    todo => {
-                        todo.getAttribute('completed') === 'false'
-                            ? (todo.style.display = 'flex')
-                            : (todo.style.display = 'none')
-                    }
-                )
-            })
+                Array.from(document.querySelectorAll('#todo-item')).forEach(todo => {
+                    todo.getAttribute('completed') === 'false'
+                        ? (todo.style.display = 'flex')
+                        : (todo.style.display = 'none');
+                });
+            });
         }
 
-        const sortDone = () => {
+        function sortByDone() {
             sortButtonDone.addEventListener('click', () => {
-                Array.from(document.querySelectorAll('#todoItem')).forEach(
-                    todo => {
-                        todo.getAttribute('completed') === 'true'
-                            ? (todo.style.display = 'flex')
-                            : (todo.style.display = 'none')
-                    }
-                )
-            })
+                Array.from(document.querySelectorAll('#todo-item')).forEach(todo => {
+                    todo.getAttribute('completed') === 'true'
+                        ? (todo.style.display = 'flex')
+                        : (todo.style.display = 'none');
+                });
+            });
         }
 
-        const sortAll = () => {
+        function sortByAll() {
             sortButtonAll.addEventListener('click', () => {
-                Array.from(document.querySelectorAll('#todoItem')).forEach(
-                    todo => (todo.style.display = 'flex')
-                )
-            })
+                Array.from(document.querySelectorAll('#todo-item')).forEach(todo => (todo.style.display = 'flex'));
+            });
         }
 
-        sortTodo()
-        sortDone()
-        sortAll()
+        sortByTodo();
+        sortByDone();
+        sortByAll();
     }
 
-    const addTodo = () => {
-        submitFormTodo = () => {
-            todoForm.addEventListener('submit', () => {
-                createTodoItem()
-                todoInputField.value = ''
-                todoInputField.focus()
-            })
-        }
+    todoForm.addEventListener('submit', () => {
+        createTodoItem();
+        todoInputValue.value = '';
+        todoInputValue.focus();
+    });
 
-        addButtonTodo = () => {
-            addTodoButton.addEventListener('click', () => {
-                createTodoItem()
-                todoInputField.value = ''
-                todoInputField.focus()
-            })
-        }
+    addTodoButton.addEventListener('click', () => {
+        createTodoItem();
+        todoInputValue.value = '';
+        todoInputValue.focus();
+    });
 
-        submitFormTodo()
-        addButtonTodo()
-    }
-
-    addTodo()
-    sortTodos()
+    sortTodos();
 }
 
-toDoApp()
+toDoApp();
