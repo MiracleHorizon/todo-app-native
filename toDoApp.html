@@ -4,65 +4,51 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="/styles/todoList.css" />
-        <link rel="stylesheet" href="/styles/todoForm.css" />
-        <link rel="stylesheet" href="/styles/todoItems.css" />
-        <script
-            src="https://kit.fontawesome.com/7a5a382167.js"
-            crossorigin="anonymous"
-        ></script>
-        <title>toDoList</title>
+        <link rel="stylesheet" href="/styles/todo_app_main.css" />
+        <link rel="stylesheet" href="/styles/todo_form.css" />
+        <link rel="stylesheet" href="/styles/todo_items.css" />
+        <link rel="stylesheet" href="/styles/clear_base_styles.css" />
+        <script src="https://kit.fontawesome.com/7a5a382167.js" crossorigin="anonymous"></script>
+        <title>toDoApp</title>
     </head>
     <body>
         <div class="wrapper">
-            <div class="todo_list">
-                <span class="title_text"><h1>ToDo List</h1></span>
-                <form id="todoForm" class="todo_form" action="#">
+            <div class="todo_app_block">
+                <h1 class="title_text">ToDo App</h1>
+                <form id="todo-form" class="todo_form" action="#">
                     <div class="list_icon">
                         <i class="fa-solid fa-clipboard-list"></i>
                     </div>
-                    <input
-                        id="todoInput"
-                        class="form_input_text"
-                        type="text"
-                        placeholder="Enter your next task"
-                    />
-                    <div id="addTodoButton" class="add_icon">
+                    <input id="todo-input" class="form_input_text" type="text" placeholder="Enter your next task" />
+                    <div id="add-todo-button" class="add_icon">
                         <i class="fa-solid fa-circle-plus"></i>
                     </div>
                 </form>
-                <ul id="todoList" class="todos_block">
+                <div class="todos_main_block">
                     <div class="info_panel">
                         <span class="icon_list">
                             <i class="fa-solid fa-list-check"></i>
                         </span>
-                        <div id="sortButtonTodo" class="sort_todo">
-                            <span><h1>ToDo</h1></span>
+                        <div id="sort-button-todo" class="sort_todo">
+                            <h1>ToDo</h1>
                         </div>
-                        <div id="sortButtonDone" class="sort_done">
-                            <span><h1>Done</h1></span>
+                        <div id="sort-button-done" class="sort_done">
+                            <h1>Done</h1>
                         </div>
-                        <div id="sortButtonAll" class="sort_all">
-                            <span><h1>All</h1></span>
+                        <div id="sort-button-all" class="sort_all">
+                            <h1>All</h1>
                         </div>
                     </div>
-                    <li id="storage" class="todo_item" style="display: none">
-                        <div
-                            id="checkTodoButton"
-                            class="icon_check_task"
-                            style="display: none"
-                        >
+                    <ul id="todo-list" class="todos_list"></ul>
+                    <div id="storage" class="todo_item" style="display: none">
+                        <span id="check-todo-button" class="icon_check_task" style="display: none">
                             <i class="fa-solid fa-check"></i>
-                        </div>
-                        <div
-                            id="removeTodoButton"
-                            class="icon_delete"
-                            style="display: none"
-                        >
+                        </span>
+                        <span id="remove-todo-button" class="icon_delete" style="display: none">
                             <i class="fa-solid fa-xmark"></i>
-                        </div>
-                    </li>
-                </ul>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="/toDoApp.js"></script>
